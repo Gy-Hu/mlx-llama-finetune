@@ -38,6 +38,12 @@ git checkout b3418
 ./mlx-ft.sh data
 ```
 
+or use the pre-processed data **(recommend)**:
+
+```
+python data_preprocess.py
+```
+
 ## Download the source model
 
 ```

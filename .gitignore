@@ -130,3 +130,6 @@ poetry.toml
 /data
 /models
 /adapters
+
+Qwen2.5-7B-Instruct/
+Qwen2.5-3B-Instruct-GPTQ-Int8/
