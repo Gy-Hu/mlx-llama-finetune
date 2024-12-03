@@ -3,19 +3,21 @@
 set -e
 
 model_name="llama3.1-spk1"
-source_model="meta-llama/Meta-Llama-3.1-8B-Instruct"
+source_model="meta-llama/Llama-3.1-8B-Instruct"
 local_model="./models/mlx"
 fused_model="./models/llama-3.1-fused"
 
 function install() {
-  poetry install --no-root
-  poetry run pip install -r llama.cpp/requirements.txt
+  # Create and activate conda environment
+  # conda create -n mlx-env python=3.10 -y
+  # conda activate mlx-env
+  pip install -r llama.cpp/requirements.txt
 }
 
 function data() {
   if [ ! -d "./data" ] || [ ! -f "./data/train.jsonl" ] || [ ! -f "./data/valid.jsonl" ]; then
     echo "Download and prepare datesets."
-    poetry run python prepare_data.py
+    python prepare_data.py
   fi
   echo "Datasets ready."
 }
@@ -23,7 +25,7 @@ function data() {
 function fetch() {
   if [ ! -d "./models/mlx" ]; then
     echo "Fetch and quantize model."
-    poetry run mlx_lm.convert \
+    mlx_lm.convert \
       --hf-path "${source_model}" \
       --mlx-path "${local_model}" \
       --quantize \
@@ -39,7 +41,7 @@ function train() {
     data
     fetch
     echo "Training with config file lora_config.yaml"
-    poetry run mlx_lm.lora --config lora_config.yaml --model ${local_model}
+    mlx_lm.lora --config lora_config.yaml --model ${local_model}
   fi
   echo "Model trained with Lora."
 }
@@ -56,7 +58,7 @@ function test() {
   fi
 
   echo "Test model."
-  poetry run mlx_lm.lora \
+  mlx_lm.lora \
     --model "${local_model}" \
     --adapter-path ./adapters \
     --data ./data \
@@ -68,7 +70,7 @@ function fuse() {
     train
     echo "Fuse fine-tuned weights with original model"
 
-    poetry run mlx_lm.fuse \
+    mlx_lm.fuse \
       --model ${local_model} \
       --save-path "${fused_model}" \
       --adapter-path ./adapters \
@@ -81,7 +83,7 @@ function convert() {
   if [ ! -f "./modesl/model.gguf" ]; then
     fuse
     echo "Converting weights to GGUF format"
-    poetry run python ./llama.cpp/convert_hf_to_gguf.py \
+    python ./llama.cpp/convert_hf_to_gguf.py \
       --outfile ./models/model.gguf \
       --outtype q8_0 \
       --model-name ${model_name} \
