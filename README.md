@@ -41,10 +41,16 @@ git checkout b3418
 ## Download the source model
 
 ```
-mlx_lm.convert --hf-path Qwen/Qwen2.5-7B-Instruct --mlx-path ./models/mlx -q # or ./mlx-ft.sh fetch
+mlx_lm.convert --hf-path Qwen/Qwen2.5-7B-Instruct --mlx-path ./models/mlx -q 
 ```
 
-Also can use `hfd` to download the model first:
+Or 
+
+```
+./mlx-ft.sh fetch
+```
+
+Also can use `hfd` to download the model first **(recommend)**:
 
 ```
 hfd Qwen/Qwen2.5-7B-Instruct --hf_username xxxx --hf_token hf_xxxxx
