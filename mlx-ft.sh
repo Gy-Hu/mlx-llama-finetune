@@ -3,8 +3,8 @@
 set -e
 
 model_name="qwen2.5-spk1"
-source_model="Qwen/Qwen2.5-7B-Instruct"
-local_model="./models/mlx"
+source_model="Qwen/Qwen2.5-3B-Instruct"
+local_model="./models/mlx/Qwen2.5-3B-Instruct"
 fused_model="./models/qwen2.5-fused"
 
 function install() {
