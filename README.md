@@ -1,6 +1,6 @@
 # Fine-tune Qwen model with MLX
 
-Reproduce the blog post [Fine-tune Qwen2.5 with MLX on Mac](https://samkuo.me/post/2024/08/fine-tune-llama-31-with-mlx-on-mac/)
+Reproduce the blog post [Fine-tune llama3.1 with MLX on Mac](https://samkuo.me/post/2024/08/fine-tune-llama-31-with-mlx-on-mac/) by changing the model to Qwen2.5.
 
 ## Pre-requisites
 
