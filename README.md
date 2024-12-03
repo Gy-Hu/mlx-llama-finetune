@@ -1,6 +1,6 @@
 # Fine-tune Qwen model with MLX
 
-Reproduce the blog post [Fine-tune llama3.1 with MLX on Mac](https://samkuo.me/post/2024/08/fine-tune-llama-31-with-mlx-on-mac/) by changing the model to Qwen2.5.
+Reproduce the blog post [Fine-tune llama3.1 with MLX on Mac](https://samkuo.me/post/2024/08/fine-tune-llama-31-with-mlx-on-mac/) by changing the model to Qwen2.5. Also can refer to [Official reference](https://github.com/ml-explore/mlx-examples/blob/main/llms/mlx_lm/LORA.md).
 
 ## Pre-requisites
 
@@ -46,8 +46,10 @@ python data_preprocess.py
 
 ## Download the source model
 
+Try this first:
+
 ```
-mlx_lm.convert --hf-path Qwen/Qwen2.5-7B-Instruct --mlx-path ./models/mlx -q 
+mlx_lm.convert --hf-path Qwen/Qwen2.5-3B-Instruct --mlx-path ./models/mlx -q 
 ```
 
 Or 
@@ -56,14 +58,14 @@ Or
 ./mlx-ft.sh fetch
 ```
 
-Also can use `hfd` to download the model first **(recommend)**:
+Also can use `hfd` to download the model first **(recommend, but may encounter some issues: RuntimeError: [read] Unable to read 8 bytes from file.)**:
 
 ```
-hfd Qwen/Qwen2.5-7B-Instruct --hf_username xxxx --hf_token hf_xxxxx
-mlx_lm.convert --hf-path Qwen/Qwen2.5-7B-Instruct --mlx-path ./models/mlx -q
+hfd Qwen/Qwen2.5-3B-Instruct --hf_username xxxx --hf_token hf_xxxxx
+mlx_lm.convert --hf-path Qwen/Qwen2.5-3B-Instruct --mlx-path ./models/mlx -q
 ```
 
-This will download and quantize the Qwen2.5-7B-Instruct model.
+This will download and quantize the Qwen2.5-3B-Instruct model.
 
 ## Begin fine-tuning
 

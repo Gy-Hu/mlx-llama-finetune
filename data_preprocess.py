@@ -59,7 +59,7 @@ def process_file(input_file: str, train_ratio=0.8, val_ratio=0.1, test_ratio=0.1
                 f.write(json_str + '\n')
     
     write_jsonl(train_data, "train.jsonl")
-    write_jsonl(val_data, "val.jsonl")
+    write_jsonl(val_data, "valid.jsonl")
     write_jsonl(test_data, "test.jsonl")
     
     # Print statistics

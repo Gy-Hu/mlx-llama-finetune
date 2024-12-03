@@ -1,5 +1,5 @@
 # The path to the local model directory or Hugging Face repo.
-model: "Qwen/Qwen2.5-7B-Instruct"
+model: "Qwen/Qwen2.5-3B-Instruct"
 # Whether or not to train (boolean)
 train: true
 
