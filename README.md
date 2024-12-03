@@ -74,6 +74,7 @@ This is a time-consuming process. In this case, the dataset from mlx-examples is
 ./mlx-ft.sh create
 ```
 
+Actually runs:
 ```
 python ./llama.cpp/convert-hf-to-gguf.py --outfile ./models/model.gguf --outtype q8_0 ./models/llama3.1-spk1
 ```
