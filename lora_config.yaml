@@ -1,5 +1,5 @@
 # The path to the local model directory or Hugging Face repo.
-model: "meta-llama/Meta-Llama-3.1-8B-Instruct"
+model: "Qwen/Qwen2.5-7B-Instruct"
 # Whether or not to train (boolean)
 train: true
 

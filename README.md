@@ -1,6 +1,6 @@
-# Fine-tune Llama model with MLX
+# Fine-tune Qwen model with MLX
 
-Reproduce the blog post [Fine-tune Llama model with MLX](https://samkuo.me/post/2024/08/fine-tune-llama-31-with-mlx-on-mac/)
+Reproduce the blog post [Fine-tune Qwen2.5 with MLX on Mac](https://samkuo.me/post/2024/08/fine-tune-llama-31-with-mlx-on-mac/)
 
 ## Pre-requisites
 
@@ -40,8 +40,10 @@ git checkout b3418
 ## Download the source model
 
 ```
-./mlx-ft.sh fetch
+mlx_lm.convert --hf-path Qwen/Qwen2.5-7B-Instruct --mlx-path ./models/mlx -q # or ./mlx-ft.sh fetch
 ```
+
+This will download and quantize the Qwen2.5-7B-Instruct model.
 
 ## Begin fine-tuning
 
@@ -49,7 +51,7 @@ git checkout b3418
 ./mlx-ft.sh train
 ```
 
-This actually runs `mlx_lm.lora --config lora_config.yaml`
+This runs `mlx_lm.lora --config lora_config.yaml` to fine-tune the Qwen model.
 
 ## Fuse the model
 
@@ -57,7 +59,7 @@ This actually runs `mlx_lm.lora --config lora_config.yaml`
 ./mlx-ft.sh fuse
 ```
 
-Actually runs:
+This fuses the LoRA weights with the base model:
 
 ```
 mlx_lm.fuse \
@@ -69,18 +71,7 @@ mlx_lm.fuse \
 
 ## Build the Ollama model
 
-This is a time-consuming process. In this case, the dataset from mlx-examples is used instead.
-
-```
-./mlx-ft.sh create
-```
-
-Actually runs:
-```
-python ./llama.cpp/convert-hf-to-gguf.py --outfile ./models/model.gguf --outtype q8_0 ./models/llama3.1-spk1
-```
-
-## Run the fine-tuned model locally with Ollama
+This converts the model to GGUF format for use with Ollama:
 
 ```
 ./mlx-ft.sh create

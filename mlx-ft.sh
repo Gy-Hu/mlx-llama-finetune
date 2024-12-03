@@ -2,10 +2,10 @@
 
 set -e
 
-model_name="llama3.1-spk1"
-source_model="meta-llama/Llama-3.1-8B-Instruct"
+model_name="qwen2.5-spk1"
+source_model="Qwen/Qwen2.5-7B-Instruct"
 local_model="./models/mlx"
-fused_model="./models/llama-3.1-fused"
+fused_model="./models/qwen2.5-fused"
 
 function install() {
   # Create and activate conda environment
