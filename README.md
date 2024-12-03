@@ -10,6 +10,7 @@ Reproduce the blog post [Fine-tune Llama model with MLX](https://samkuo.me/post/
 4. Create a conda env `conda create -n mlx-env python=3.10 -y`
 5. Activate the env `conda activate mlx-env`
 6. Install the dependencies `pip install datasets mlx-lm`
+7. Using the HF mirror: `export HF_ENDPOINT=https://hf-mirror.com`
 
 ## Checkout code
 
